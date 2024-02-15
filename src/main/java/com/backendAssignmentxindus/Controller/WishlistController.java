@@ -31,15 +31,13 @@ public class WishlistController {
     @Autowired
     private WishlistsRepository wishlistsRepository;
 
-
     @Autowired
     private AuthController authController;
 
     @Autowired
     private UserRepository userRepository;
 
-
-    @PostMapping("/creatWishListItemByUserSide")
+    @PostMapping("/createWishlistItemByAuthenticateUser")
     public ResponseEntity creteWishListerByUser(@RequestBody CreateWishlistDto createWishlistDto){
        try {
            LogginRequest logginRequest = new LogginRequest(createWishlistDto.getEmail(), createWishlistDto.getPassword());
@@ -62,7 +60,6 @@ public class WishlistController {
         return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
     }
 
-
     @GetMapping("/getAllWishlistByUser")
     public List<Wishlists> creteWishListerByUser(@RequestBody GetAllUserWishList getAllUserWishList) {
         try {
@@ -79,19 +76,12 @@ public class WishlistController {
         return wishlistsService.findAllWishListByUser(getAllUserWishList.getEmail());
     }
 
-
-
-
-
-
-
-    @GetMapping("/findwishlistById/{id}")
+    @GetMapping("/findWishlisForAllID/{id}")
     public ResponseEntity findwishListById(@PathVariable Long id){
         return ResponseEntity.ok(wishlistsService.findById(id));
     }
 
-
-    @GetMapping("/findWishlist/{id}")
+    @GetMapping("/findWishlistAuthenticateUserById/{id}")
     public ResponseEntity findlist(@RequestBody GetAllUserWishList userInfo, @PathVariable Long id) throws Exception {
         try {
             LogginRequest logginRequest = new LogginRequest(userInfo.getEmail(), userInfo.getPassword());
@@ -104,22 +94,16 @@ public class WishlistController {
             ResponseEntity<String> stringResponseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
             return stringResponseEntity;
         }
-
         try {
-            return ResponseEntity.ok(wishlistsService.findByIdOnlyAutheticUser(userInfo.getEmail(), id));
+            return ResponseEntity.ok(wishlistsService.findByIdOnlyAuthenticateUser(userInfo.getEmail(), id));
 
         }catch (Exception e){
             ResponseEntity<String> stringResponseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
             return stringResponseEntity;
         }
-
-
     }
 
-
-
-
-    @DeleteMapping("/deleteById/{id}")
+    @DeleteMapping("/deleteWishlistItemAuthenticateUserById/{id}")
     public ResponseEntity deletelistByID(@RequestBody GetAllUserWishList userInfo, @PathVariable Long id) throws Exception {
         try {
             LogginRequest logginRequest = new LogginRequest(userInfo.getEmail(), userInfo.getPassword());
@@ -132,89 +116,13 @@ public class WishlistController {
             ResponseEntity<String> stringResponseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
             return stringResponseEntity;
         }
-
         try {
-            return ResponseEntity.ok(wishlistsService.deleteByIdOnlyAutheticUser(userInfo.getEmail(), id));
+            return ResponseEntity.ok(wishlistsService.deleteByIdOnlyAuthenticateUser(userInfo.getEmail(), id));
 
         }catch (Exception e){
             ResponseEntity<String> stringResponseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
             return stringResponseEntity;
         }
-
-
     }
-
-
-
-
-
-//    @PostMapping("/creatWishListItemByUserSide")
-//    public ResponseEntity<Wishlists> createWishlistItem(@RequestBody CreateWishlistDto createWishlistDto) {
-//        LogginRequest logginRequest = new LogginRequest(createWishlistDto.getEmail(), createWishlistDto.getPassword());
-//        AuthResponse authResponse = authController.signin(logginRequest);
-//
-//        if(authResponse == null){
-//            throw new UsernameNotFoundException("User Not Found");
-//        }
-//
-//        Wishlists wishlists1 = new Wishlists(createWishlistDto.getName(),createWishlistDto.getDescription(),createWishlistDto.getPrice());
-//        Wishlists createdItem = wishlistsService.createWishListItemByUser(wishlists1);
-//        return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
-//    }
-
-
-
-    //    @PostMapping("/creatWishListItemByUserSide")
-//    public ResponseEntity<Wishlists> createWishlistItem(@RequestBody CreateWishlistDto createWishlistDto) {
-//        LogginRequest logginRequest = new LogginRequest(createWishlistDto.getEmail(), createWishlistDto.getPassword());
-//        AuthResponse authResponse = authController.signin(logginRequest);
-//
-//        if(authResponse == null){
-//            throw new UsernameNotFoundException("User Not Found");
-//        }
-//
-//        Wishlists wishlists1 = new Wishlists(createWishlistDto.getName(),createWishlistDto.getDescription(),createWishlistDto.getPrice());
-//        Wishlists createdItem = wishlistsService.createWishListItemByUser(wishlists1);
-//        return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
-//    }
-
-
-//
-//    @GetMapping("/getlist/{id}")
-//    public ResponseEntity<Wishlists> getWishlistItemById(@PathVariable Long id) throws Exception {
-//        Wishlists wishlistItem = wishlistsService.findById(id);
-//        return ResponseEntity.ok(wishlistItem);
-//    }
-//
-//
-//    @GetMapping("/getalllistbyuser")
-//    public List<Wishlists> getAllWishListByUser(){
-//        return wishlistsRepository.findAll();
-//    }
-//
-//
-//    @DeleteMapping("/dletelist/{id}")
-//    public void deleteWishlistItemById(@PathVariable Long id) throws Exception {
-//        Optional<Wishlists> optionalWishlists = wishlistsRepository.findById(id);
-//
-//        if(optionalWishlists.isEmpty()){
-//            throw new Exception("id is not valid");
-//        }
-//        wishlistsRepository.deleteById(id);
-//    }
-//
-
-//
-//    @PostMapping("/addcreate/{userid}")
-//    public Wishlists creatlistuser(@RequestBody Wishlists wishlistss, @PathVariable Long userid ){
-//        try {
-//            return wishlistsService.createWishlistItem(wishlistss, userid);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-
-
 
 }

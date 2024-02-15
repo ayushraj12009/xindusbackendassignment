@@ -41,16 +41,16 @@ public class WishlistsService {
         return wishlistsRepository.findById(id).get();
     }
 
-    public Wishlists findByIdOnlyAutheticUser(String email, Long id) throws Exception{
+    public Wishlists findByIdOnlyAuthenticateUser(String email, Long id) throws Exception{
         User user = userRepository.findByEmail(email);
         Optional<Wishlists> wishlists = wishlistsRepository.findById(id);
 
         if (wishlists.isEmpty()){
-            throw new Exception("Wishlist is not avaliable with this ID");
+            throw new Exception("Wishlist is not available with this ID");
         }
 
         if (!user.getWishlists().contains(wishlists.get())){
-            throw  new Exception("This Wishlist Item is not matach with the user");
+            throw  new Exception("This Wishlist Item is not match with the user");
         }
 
         return wishlists.get();
@@ -58,7 +58,7 @@ public class WishlistsService {
     }
 
 
-    public String deleteByIdOnlyAutheticUser(String email, Long id) throws Exception {
+    public String deleteByIdOnlyAuthenticateUser(String email, Long id) throws Exception {
         // Find the user by email
         User user = userRepository.findByEmail(email);
         if (user == null) {
