@@ -1,10 +1,10 @@
-package com.xindusbackendassignment;
+package com.backendAssignmentxindus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class XindusbackendassignmentApplicationTests {
+class BackendAssignmentApplicationTests {
 
 	@Test
 	void contextLoads() {
