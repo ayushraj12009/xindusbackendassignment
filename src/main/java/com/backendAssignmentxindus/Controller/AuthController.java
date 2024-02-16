@@ -81,7 +81,7 @@ public class AuthController {
 
 
 
-
+                      //without try catch (old API)
 //    @PostMapping("/signup")
 //    public AuthResponse createUser(@RequestBody User user) throws Exception {
 //
@@ -112,7 +112,7 @@ public class AuthController {
 //    }
 
 
-
+            //without try catch (old API)
 //    @PostMapping("/signin")
 //    public AuthResponse signin(@RequestBody LogginRequest logginRequest){
 //        Authentication authentication = authenticate(logginRequest.getEmail(), logginRequest.getPassword());
