@@ -18,9 +18,20 @@ public class CreateWishlistDto {
 
     private String description;
 
-    private BigDecimal price;
+    private Integer price;
 
     private String email;
 
     private String password;
+
+    public CreateWishlistDto(String itemName, String itemDescription, int i, String email, String testpassword) {
+
+        this.name = itemName;
+        this.description = itemDescription;
+        this.price = i;
+        this.email = email;
+        this.password = testpassword;
+
+
+    }
 }

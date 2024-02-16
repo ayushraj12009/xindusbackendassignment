@@ -28,7 +28,7 @@ public class Wishlists {
 
     private String description;
 
-    private BigDecimal price;
+    private Integer price;
 
 
     @JsonIgnore
@@ -36,9 +36,8 @@ public class Wishlists {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Wishlists(String name, String description, BigDecimal price) {
+    public Wishlists(String name, String description, int price) {
         this.name = name;
-
         this.description = description;
         this.price =price;
     }

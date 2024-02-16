@@ -54,7 +54,7 @@ public class AuthControllerTest {
         newUser.setFristName("Ayush");
         newUser.setLastName("Raj");
         newUser.setEmail("ayushraj12009@gmail.com");
-        newUser.setPassword("AyushRaj@#2024");
+        newUser.setPassword("AyushRaj@#12009");
 
         when(userRepository.findByEmail(newUser.getEmail())).thenReturn(null);
         when(userRepository.save(any(User.class))).thenReturn(newUser);
@@ -72,7 +72,7 @@ public class AuthControllerTest {
         existingUser.setFristName("Ayush");
         existingUser.setLastName("Raj");
         existingUser.setEmail("ayushraj12009@gmail.com");
-        existingUser.setPassword("AyushRaj@#2024");
+        existingUser.setPassword("AyushRaj@#12009");
 
         when(userRepository.findByEmail(existingUser.getEmail())).thenReturn(existingUser);
 
@@ -81,22 +81,17 @@ public class AuthControllerTest {
     }
 
 
+    @Test
+    public void testSignIn_Success() {
+        String email = "ayushraj12009@gmail.com";
+        String password = "AyushRaj@#12009";
 
-//    @Test
-//    public void testSignIn_Success() {
-//        String email = "ayushraj12009@gmail.com";
-//        String password = "AyushRaj@#2024";
-//
-//        // Create a simple UserDetails object with a valid username, password, and granted authority
-//      //  UserDetails userDetails = new User("ayushraj12009@gmail.com", "AyushRaj@#2024", Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
-//
-//        when(customerUserDetailsService.loadUserByUsername(email)).thenReturn(userDetails);
-//        when(passwordEncoder.matches(password, userDetails.getPassword())).thenReturn(true);
-//
-//        LogginRequest logginRequest = new LogginRequest(email, password);
-//        AuthResponse response = authController.signin(logginRequest);
-//        assertEquals("Login Success", response.getMessage());
-//    }
+        LogginRequest logginRequest = new LogginRequest(email, password);
+
+        AuthResponse response = authController.signin(logginRequest);
+
+        assertEquals("Login Success", response.getMessage());
+    }
 
 
 

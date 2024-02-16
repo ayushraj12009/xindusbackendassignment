@@ -35,7 +35,17 @@ public class User {
     private List<Wishlists> wishlists = new ArrayList<>();
 
 
+    public User(String s, String s1) {
+        this.email = s;
+        this.password = s1;
 
+    }
 
-
+    public User(String firstName, String last, String userName, String eamil, String password) {
+        this.fristName = firstName;
+        this.lastName = last;
+        this.userName = userName;
+        this.email = eamil;
+        this.password = password;
+    }
 }

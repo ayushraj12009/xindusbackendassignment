@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -61,7 +62,8 @@ public class WishlistController {
     }
 
     @GetMapping("/getAllWishlistByUser")
-    public List<Wishlists> creteWishListerByUser(@RequestBody GetAllUserWishList getAllUserWishList) {
+    public List<Wishlists> getAllWishListByUser(@RequestBody GetAllUserWishList getAllUserWishList) {
+
         try {
             LogginRequest logginRequest = new LogginRequest(getAllUserWishList.getEmail(), getAllUserWishList.getPassword());
             AuthResponse authResponse = authController.signin(logginRequest);
