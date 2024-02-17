@@ -13,3 +13,9 @@ Project: Wishlists Mangement
         - Run the application
 
 ### Here are the APIs you can test using Swagger or Postman:
+![image](https://github.com/ayushraj12009/xindusbackendassignment/assets/51042913/db959f4c-ae9b-40b8-a2cb-9b431273b679)
+
+- For easy understanding, I've named each API according to its functionality
+
+- 
+
