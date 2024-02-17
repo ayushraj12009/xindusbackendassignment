@@ -17,15 +17,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-
-
-import java.util.Collections;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class AuthControllerTest {
 
@@ -62,7 +57,6 @@ public class AuthControllerTest {
 
         AuthResponse response = authController.createUser(newUser);
         assertEquals("Signup Success", response.getMessage());
-
     }
 
     @Test

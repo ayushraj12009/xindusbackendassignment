@@ -24,13 +24,13 @@ public class CreateWishlistDto {
 
     private String password;
 
-    public CreateWishlistDto(String itemName, String itemDescription, int i, String email, String testpassword) {
+    public CreateWishlistDto(String name, String description, int price, String email, String password) {
 
-        this.name = itemName;
-        this.description = itemDescription;
-        this.price = i;
+        this.name = name;
+        this.description = description;
+        this.price = price;
         this.email = email;
-        this.password = testpassword;
+        this.password = password;
 
 
     }

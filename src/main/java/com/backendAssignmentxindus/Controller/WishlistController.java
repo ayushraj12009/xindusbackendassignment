@@ -53,7 +53,7 @@ public class WishlistController {
 
        User user = userRepository.findByEmail(createWishlistDto.getEmail());
 
-        Wishlists wishlists1 = new Wishlists(createWishlistDto.getName(),createWishlistDto.getDescription(),createWishlistDto.getPrice());
+       Wishlists wishlists1 = new Wishlists(createWishlistDto.getName(),createWishlistDto.getDescription(),createWishlistDto.getPrice());
 
        wishlists1.setUser(user);
 
