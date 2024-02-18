@@ -68,7 +68,7 @@ Project: Wishlists Mangement
           }
    - Description: Paste Signin JWT Token in Header.
 
-6. **Get wishlist By ID**
+6. **Delete wishlist By ID**
    - Path: `http://localhost:8080/api/deleteById/{Paste ID}`
    - Method: Delete
    - Body {            
