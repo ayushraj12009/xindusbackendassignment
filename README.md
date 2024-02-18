@@ -21,12 +21,13 @@ Project: Wishlists Mangement
    - Path: `http://localhost:8080/auth/signup`
    - Method: POST
    - Body {
-            "fristName":"-----------", 
-            "lastName":"-----------",
-            "userName":"-----------",
-            "email":"-----------",
-            "password":"-----------"
-          }
+    "name": "-----------",
+    "description": "-----------",
+    "price": -----------,
+    "email": "-----------", // email should be present in database
+    "password": "-----------" // password same related to email
+}
+
 
 2. **Signin**
    - Path: `http://localhost:8080/auth/signin`
@@ -67,7 +68,7 @@ Project: Wishlists Mangement
           }
    - Description: Paste Signin JWT Token in Header.
 
-5. **Get wishlist By ID**
+6. **Get wishlist By ID**
    - Path: `http://localhost:8080/api/deleteById/{Paste ID}`
    - Method: Delete
    - Body {            
@@ -77,14 +78,16 @@ Project: Wishlists Mangement
    - Description: Paste Signin JWT Token in Header.
 
 
-5. **Get wishlist By ID For Any User**
+7. **Get wishlist By ID For Any User**
    - Path: `http://localhost:8080/api/findWishlisForAllID/{Paste ID}`
    - Method: GET
    - Body {            
             EMPTY
           }
    - Description: Paste Signin JWT Token in Header.
-
-
-- 
+     
+### For Testing Just Run the Testcase File:
+8. **There Are Two Testcase File Present In This Project**
+   - AuthControllerTest
+   - WishlistControllerTest 
 
