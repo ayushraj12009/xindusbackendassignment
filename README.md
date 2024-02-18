@@ -17,5 +17,76 @@ Project: Wishlists Mangement
 
 - For easy understanding, I've named each API according to its functionality
 
+### Here are the APIs you can test using Swagger or Postman:
+
+1. **Signup**
+   - Path: `http://localhost:8080/auth/signup`
+   - Method: POST
+   - Body {
+            "fristName":"-----------", 
+            "lastName":"-----------",
+            "userName":"-----------",
+            "email":"-----------",
+            "password":"-----------"
+          }
+
+2. **Signin**
+   - Path: `http://localhost:8080/auth/signin`
+   - Method: POST
+   - Body {            
+            "email":"-----------",
+            "password":"-----------"
+          }
+
+3. **Create a wishlist by user**
+   - Path: `http://localhost:8080/api/createWishlistItemByAuthenticateUser`
+   - Method: Post
+   - Body {            
+            "name":"-----------",
+            "description":"-----------",
+            "price": -----------,
+            "email":"-----------", // email should be present in database
+            "password":"-----------" //pasword same related to email
+          }
+   - Description: Paste Signin JWT Token in Header.
+
+4. **Get all wishlist of User**
+   - Path: `http://localhost:8080/api/getAllWishlistByUser`
+   - Method: GET
+   - Body {            
+            "email":"-----------",
+            "password":"-----------"
+          }
+   - Description: Paste Signin JWT Token in Header.
+
+
+5. **Get wishlist By ID**
+   - Path: `http://localhost:8080/api/findWishlistAuthenticateUserById/{Paste Id}`
+   - Method: GET
+   - Body {            
+            "email":"-----------",
+            "password":"-----------"
+          }
+   - Description: Paste Signin JWT Token in Header.
+
+5. **Get wishlist By ID**
+   - Path: `http://localhost:8080/api/deleteById/{Paste ID}`
+   - Method: Delete
+   - Body {            
+            "email":"-----------",
+            "password":"-----------"
+          }
+   - Description: Paste Signin JWT Token in Header.
+
+
+5. **Get wishlist By ID For Any User**
+   - Path: `http://localhost:8080/api/findWishlisForAllID/{Paste ID}`
+   - Method: GET
+   - Body {            
+            EMPTY
+          }
+   - Description: Paste Signin JWT Token in Header.
+
+
 - 
 
