@@ -20,13 +20,15 @@ Project: Wishlists Mangement
 1. **Signup**
    - Path: `http://localhost:8080/auth/signup`
    - Method: POST
-   - Body {
-            "fristName":"-----------", 
-            "lastName":"-----------",
-            "userName":"-----------",
-            "email":"-----------",
-            "password":"-----------"
-          }
+   - Body
+   - {
+    "name": "-----------",
+    "description": "-----------",
+    "price": -----------,
+    "email": "-----------", // email should be present in database
+    "password": "-----------" // password same related to email
+}
+
 
 2. **Signin**
    - Path: `http://localhost:8080/auth/signin`
