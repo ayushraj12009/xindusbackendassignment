@@ -6,15 +6,11 @@ import com.backendAssignmentxindus.Controller.LogginRequest;
 import com.backendAssignmentxindus.Model.User;
 import com.backendAssignmentxindus.Repository.UserRepository;
 import com.backendAssignmentxindus.Service.CustomerUserDetailsService;
-import java.util.Collections;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
@@ -44,6 +40,7 @@ public class AuthControllerTest {
 
     @Test
     public void testCreateUser_Success() {
+        // Creating a new user object
         User newUser = new User();
         newUser.setUserName("AyushRaj12009");
         newUser.setFristName("Ayush");
@@ -52,15 +49,20 @@ public class AuthControllerTest {
         newUser.setPassword("AyushRaj@#12009");
 
         when(userRepository.findByEmail(newUser.getEmail())).thenReturn(null);
+        // Mock save operation to return the same new user object
         when(userRepository.save(any(User.class))).thenReturn(newUser);
+        // Mock password encoding operation
         when(passwordEncoder.encode(newUser.getPassword())).thenReturn("encodedPassword");
 
+        // Calling the createUser method of authController
         AuthResponse response = authController.createUser(newUser);
+        // Checking if the response message is "Signup Success"
         assertEquals("Signup Success", response.getMessage());
     }
 
     @Test
     public void testCreateUser_EmailExists() {
+       // user object with existing email
         User existingUser = new User();
         existingUser.setUserName("AyushRaj12009");
         existingUser.setFristName("Ayush");
@@ -68,34 +70,46 @@ public class AuthControllerTest {
         existingUser.setEmail("ayushraj12009@gmail.com");
         existingUser.setPassword("AyushRaj@#12009");
 
+        // Assuming a user with the same email already exists in the database
         when(userRepository.findByEmail(existingUser.getEmail())).thenReturn(existingUser);
 
         AuthResponse response = authController.createUser(existingUser);
+
+        // Checking if the response message is "Email already used with another account"
         assertEquals("Email already used with another account", response.getMessage());
     }
 
 
     @Test
     public void testSignIn_Success() {
+        // User object with existing email
         String email = "ayushraj12009@gmail.com";
         String password = "AyushRaj@#12009";
 
+        // login request with user credentials
         LogginRequest logginRequest = new LogginRequest(email, password);
 
         AuthResponse response = authController.signin(logginRequest);
 
+        // Checking if the response message is "Login Success"
         assertEquals("Login Success", response.getMessage());
     }
 
 
     @Test
     public void testSignIn_InvalidCredentials() {
+        // User credentials with non-existing email and incorrect password
         String email = "ayushraj12009@example.com";
         String password = "RajAyushRaj2023";
+
+        // Assuming no user found with the provided email
         when(customerUserDetailsService.loadUserByUsername(email)).thenReturn(null);
 
+        // login request with user credentials
         LogginRequest logginRequest = new LogginRequest(email, password);
         AuthResponse response = authController.signin(logginRequest);
+
+        // Checking if the response message is "Invalid UserName"
         assertEquals("Invalid UserName", response.getMessage());
     }
 }
