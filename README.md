@@ -20,8 +20,7 @@ Project: Wishlists Mangement
 1. **Signup**
    - Path: `http://localhost:8080/auth/signup`
    - Method: POST
-   - Body
-   - {
+   - Body {
     "name": "-----------",
     "description": "-----------",
     "price": -----------,
@@ -86,7 +85,9 @@ Project: Wishlists Mangement
             EMPTY
           }
    - Description: Paste Signin JWT Token in Header.
-
-
-- 
+     
+### For Testing Just Run the Testcase File:
+6. **There Are Two Testcase File Present In This Project**
+   - AuthControllerTest
+   - WishlistControllerTest 
 
