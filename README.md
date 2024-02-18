@@ -17,8 +17,6 @@ Project: Wishlists Mangement
 
 - For easy understanding, I've named each API according to its functionality
 
-### Here are the APIs you can test using Swagger or Postman:
-
 1. **Signup**
    - Path: `http://localhost:8080/auth/signup`
    - Method: POST
