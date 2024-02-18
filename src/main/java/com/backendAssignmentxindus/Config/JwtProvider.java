@@ -10,8 +10,11 @@ import java.util.Date;
 
 
 public class JwtProvider  {
+
+    // Secret key used for signing and parsing JWT tokens
     private static SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
+    // Method to generate JWT token based on user authentication
     public static String generateToken (Authentication auth){
         String jwt = Jwts.builder()
                 .setIssuer("XindusTrader").setIssuedAt(new Date())
@@ -23,6 +26,7 @@ public class JwtProvider  {
         return jwt;
     }
 
+    // Method to extract email from JWT token
     public static String getEamilFromJwtToken(String jwt){
         jwt = jwt.substring(7);
 

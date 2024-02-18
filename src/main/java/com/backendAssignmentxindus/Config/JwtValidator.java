@@ -23,10 +23,13 @@ public class JwtValidator extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
+        // Extract JWT token from the request header
         String jwt = request.getHeader(JwtConstant.JWT_HEADER);
 
+        // Check if JWT token is present
         if(jwt != null){
 
+            // Extract email from JWT token
             try {
                 String email = JwtProvider.getEamilFromJwtToken(jwt);
                 List<GrantedAuthority>authorities = new ArrayList<>();
@@ -35,6 +38,7 @@ public class JwtValidator extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
 
             }catch (Exception e){
+                // Throw BadCredentialsException if token is invalid or wrong
                     throw new BadCredentialsException("Invalid Token....");
             }
         }
