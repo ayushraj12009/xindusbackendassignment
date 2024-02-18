@@ -21,11 +21,11 @@ Project: Wishlists Mangement
    - Path: `http://localhost:8080/auth/signup`
    - Method: POST
    - Body {
-    "name": "-----------",
-    "description": "-----------",
-    "price": -----------,
-    "email": "-----------", // email should be present in database
-    "password": "-----------" // password same related to email
+    "fristName": "-----------",
+    "lastName": "-----------",
+    "userName": -----------,
+    "email": "-----------", 
+    "password": "-----------" 
 }
 
 
